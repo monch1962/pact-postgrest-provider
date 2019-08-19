@@ -1,0 +1,48 @@
+{
+  "consumer": {
+    "name": "billy"
+  },
+  "provider": {
+    "name": "bobby"
+  },
+  "interactions": [
+    {
+      "description": "My test",
+      "providerState": [
+	{
+	  "name": "add Gotham City to cities table",
+	  "params": {
+	    "method": "PUT",
+	    "path": "/cities?id=eq.1",
+	    "body": {
+	      "id": 1,
+	      "name": "Gotham City",
+	      "countrycode": "USA",
+	      "district": "New Jersey",
+	      "population": 100000
+	    }
+          }
+	}
+      ],
+      "request": {
+        "method": "POST",
+        "path": "/users/login",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "username":"billy",
+          "password":"issilly"
+        }
+      },
+      "response": {
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
