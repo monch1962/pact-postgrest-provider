@@ -20,8 +20,8 @@ Use `$ docker-compose up` to spin up a Postgres database instance, plus a PostgR
 
 `$ curl -H 'Content-Type: application/json' -X PUT -d '{"id": 1, "name": "Gotham City", "countrycode": "USA", "district": "New Jersey", "population": 10000}' http://localhost:3000/city?id=eq.1` would update that record. It's equivalent to the SQL command `UPDATE city SET name='Gotham City', countrycode='USA', district='New Jersey', population=10000 WHERE id=1`
 
-## Defining PostgREST data in providerState
-It's currently not clear to me what options exist for doing this - for now, I've created a description of the above PUT statement within the file `sample-pact-v2.json`, under interactions.providerState.
+## Maintaining provider-side state via PostgREST
+It's currently not clear to me what options exist for doing this - for now, I've created a description of the above PUT statement within the file `sample-pact-v2.json`. The relevant code section is under interactions.providerState.
 
 In principle, it should be fairly straightforward to have a script extract this section of the Pact, and execute the PUT against a provider-side database. If there were multiple database interactions required, this approach could be easily extended.
 
