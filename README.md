@@ -19,3 +19,9 @@ Use `$ docker-compose up` to spin up a Postgres database instance, plus a PostgR
 `$ curl http://localhost:3000/city?id=eq.1` will return the first record from the `city` table, as a JSON payload. It's equivalent to the SQL command `SELECT * FROM city WHERE id=1;`
 `$ curl -H 'Content-Type: application/json' -X PUT -d '{"id": 1, "name": "Gotham City", "countrycode": "USA", "district": "New Jersey", "population": 10000}' http://localhost:3000/city?id=eq.1` would update that record. It's equivalent to the SQL command `UPDATE city SET name='Gotham City', countrycode='USA', district='New Jersey', population=10000 WHERE id=1`
 
+## Defining PostgREST data in providerState
+It's currently not clear to me what options exist for doing this - for now, I've created a description of the above PUT statement within the file `sample-pact-v2.json`, under interactions.providerState.
+In principle, it should be fairly straightforward to have a script extract this section of the Pact, and execute the PUT against a provider-side database. If there were multiple database interactions required, this approach could be easily extended.
+
+## Defining PostgREST stub from providerState
+Rather than using PostgREST to inject providerState data into the database, an easier option would be to create a stub to mimic the behaviour of PostgREST, and test against that stub rather than the database itself
